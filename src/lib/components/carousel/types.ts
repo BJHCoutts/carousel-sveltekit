@@ -1,5 +1,6 @@
 export type slide = {
-	bgimage: string,
-	title: string,
+	bgImagePath: string,
+	bgVideoPath: string,
 	description: string,
+	title: string,
 }
