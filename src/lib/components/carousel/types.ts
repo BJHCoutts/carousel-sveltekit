@@ -4,4 +4,5 @@ export type card = {
 	bgImagePath: string,
 	bgImageAltText: string,
 	bgVideoPath: string,
+	bgVideoCaptions: string,
 }

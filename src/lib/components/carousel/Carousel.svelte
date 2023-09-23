@@ -9,11 +9,15 @@
 <div class='carousel-container'>
 
 		<ul class='carousel-track'>
-			{#each cardsData as cardData}
-				<li>
-					<Card {cardData} />
-				</li>
-			{/each}
+			{#if cardsData.length}
+				{#each cardsData as cardData}
+					<li>
+						<Card {cardData} />
+					</li>
+				{/each}
+			{:else}
+					<p>Loading</p>
+			{/if}
 		</ul>
 
 
