@@ -1,5 +1,6 @@
 <script lang='ts'>
-	import Card from "./Card.svelte";
+	import PointingRightFinger from "../../icons/PointingRightFinger.svelte";
+import Card from "./Card.svelte";
 	import type { card } from "./types";
 
 	export let cardsData:[]|card[] = []
@@ -16,7 +17,7 @@
 					</li>
 				{/each}
 			{:else}
-					<p>Loading</p>
+					<p>There are no card to display</p>
 			{/if}
 		</ul>
 

@@ -1,46 +1,52 @@
 {
 	"cardsData": [
 		{
-			"title": "Card 1",
-			"description": "<p>This is a description for Card 1, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing, you should not see any html here, even though it is being served in the string</>",
+			"title": "Card 1 Title",
+			"description": "<p>This is a description for Card 1, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/1.jpg",
 			"bgImageAltText": "Alt Text for Card Image 1",
-			"bgVideoPath": "/assets/videos/1.mp4"
+			"bgVideoPath": "/assets/videos/1.mp4",
+			"bgVideoCaptions": "Card 1 Video Captions"
 		},
 		{
-			"title": "Card 2",
-			"description": "<p>This is a description for Card 2, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing, you should not see any html here, even though it is being served in the string</>",
+			"title": "Card 2 Title",
+			"description": "<p>This is a description for Card 2, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/2.webp",
 			"bgImageAltText": "Alt Text for Card Image 2",
-			"bgVideoPath": "/assets/videos/2.mp4"
+			"bgVideoPath": "/assets/videos/2.mp4",
+			"bgVideoCaptions": "Card 2 Video Captions"
 		},
 		{
-			"title": "Card 3",
-			"description": "<p>This is a description for Card 3, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing, you should not see any html here, even though it is being served in the string</>",
+			"title": "Card 3 Title",
+			"description": "<p>This is a description for Card 3, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/3.jpg",
 			"bgImageAltText": "Alt Text for Card Image 3",
-			"bgVideoPath": "/assets/videos/3.mp4"
+			"bgVideoPath": "/assets/videos/3.mp4",
+			"bgVideoCaptions": "Card 3 Video Captions"
 		},
 		{
-			"title": "Card 4",
-			"description": "<p>This is a description for Card 4, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing, you should not see any html here, even though it is being served in the string</>",
+			"title": "Card 4 Title",
+			"description": "<p>This is a description for Card 4, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/4.webp",
 			"bgImageAltText": "Alt Text for Card Image 4",
-			"bgVideoPath": "/assets/videos/4.mp4"
+			"bgVideoPath": "/assets/videos/4.mp4",
+			"bgVideoCaptions": "Card 4 Video Captions"
 		},
 		{
-			"title": "Card 5",
-			"description": "<p>This is a description for Card 5, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing, you should not see any html here, even though it is being served in the string</>",
+			"title": "Card 5 Title",
+			"description": "<p>This is a description for Card 5, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/5.webp",
 			"bgImageAltText": "Alt Text for Card Image 5",
-			"bgVideoPath": "/assets/videos/5.mp4"
+			"bgVideoPath": "/assets/videos/5.mp4",
+			"bgVideoCaptions": "Card 5 Video Captions"
 		},
 		{
-			"title": "Card 6",
-			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing, you should not see any html here, even though it is being served in the string</>",
+			"title": "Card 6 Title",
+			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/6.jpg",
 			"bgImageAltText": "Alt Text for Card Image 6",
-			"bgVideoPath": "/assets/videos/6.mp4"
+			"bgVideoPath": "/assets/videos/6.mp4",
+			"bgVideoCaptions": "Card 6 Video Captions"
 		}
 	]
 }
