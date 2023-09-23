@@ -1,33 +1,41 @@
 <script lang='ts'>
-	import type { slide } from "./types";
+	import Card from "./Card.svelte";
+	import type { card } from "./types";
 
-	export let slides:slide[] = []
+	export let cardsData:[]|card[] = []
 
 </script>
 
 <div class='carousel-container'>
 
-	<div class='carousel-track'>
-		<ul>
-			{#each slides as slide}
-				<li></li>
+		<ul class='carousel-track'>
+			{#each cardsData as cardData}
+				<li>
+					<Card {cardData} />
+				</li>
 			{/each}
 		</ul>
-	</div>
+
 
 	<ul>
-		{#each {length: totalDots} as _, i}
+		<!-- {#each {length: totalDots} as _, i}
 			<li class/>
-		{/each}
+		{/each} -->
 	</ul>
 
 </div>
 
-<style>
+<style lang='scss'>
 
 	.carousel-container {
 		position: relative;
 		width: 100%;
+	}
+
+	.carousel-track {
+		list-style: none;
+		display: grid;
+		grid-gap: 2.5em;
 	}
 
 </style>

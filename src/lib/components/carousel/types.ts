@@ -1,6 +1,7 @@
-export type slide = {
-	bgImagePath: string,
-	bgVideoPath: string,
-	description: string,
+export type card = {
 	title: string,
+	description: string,
+	bgImagePath: string,
+	bgImageAltText: string,
+	bgVideoPath: string,
 }

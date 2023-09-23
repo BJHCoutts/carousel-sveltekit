@@ -4,7 +4,7 @@ export async function load({fetch}) {
 
 	try {
 
-		const res = await fetch(`/src/lib/dummyData/cards.json`)
+		const res = await fetch(`/src/lib/dummyData/cardsData.json`)
 	
 		const data = await res.json()
 	

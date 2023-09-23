@@ -1,12 +1,18 @@
 <script lang='ts'>
 
+	import Carousel from '../lib/components/carousel/Carousel.svelte';
+	import type { card } from '../lib/components/carousel/types.js';
+
 	export let data
 
-	const {cards} = data
+	let cardsData:[]|card[] = []
 
-	console.log(cards)
+	if (data.cardsData.length) {
+		cardsData = data.cardsData
+	}
 
 </script>
 
 <h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+
+<Carousel {cardsData} />
