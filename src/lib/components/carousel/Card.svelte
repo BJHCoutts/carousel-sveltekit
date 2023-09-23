@@ -52,16 +52,14 @@
 		height: 100%;
 		width: 100%;
 		background-color: hsla(0,0,0,.5);
+		display: grid;
+		place-content: center;
 	}
 
 	.card-text {
-		position: relative;
+		position: absolute;
 		color: white;
 		inset: 1em;
-		height: 100%;
-		width: 100%;
-		word-wrap: normal;
-		border: red solid 2px;
 	}
 
 	.card-title {
