@@ -47,6 +47,14 @@
 			"bgImageAltText": "Alt Text for Card Image 6",
 			"bgVideoPath": "/assets/videos/6.mp4",
 			"bgVideoCaptions": "Card 6 Video Captions"
+		},
+		{
+			"title": "Card 7 Title",
+			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
+			"bgImagePath": "/assets/images/7.jpeg",
+			"bgImageAltText": "Alt Text for Card Image 7",
+			"bgVideoPath": "/assets/videos/7.mp4",
+			"bgVideoCaptions": "Card 7 Video Captions"
 		}
 	]
 }
