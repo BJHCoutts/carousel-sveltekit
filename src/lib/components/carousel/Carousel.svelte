@@ -1,6 +1,6 @@
 <script lang='ts'>
-	import PointingRightFinger from "../../icons/PointingRightFinger.svelte";
-import Card from "./Card.svelte";
+
+	import CardBaked from "./CardBaked.svelte";
 	import type { card } from "./types";
 
 	export let cardsData:[]|card[] = []
@@ -13,7 +13,7 @@ import Card from "./Card.svelte";
 			{#if cardsData.length}
 				{#each cardsData as cardData}
 					<li>
-						<Card {cardData} />
+						<CardBaked {cardData} />
 					</li>
 				{/each}
 			{:else}
