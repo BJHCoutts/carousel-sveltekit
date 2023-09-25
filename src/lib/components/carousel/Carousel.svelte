@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import Siema from 'siema'
+	import Siema, { type SiemaOptions } from 'siema'
 	import { onMount, createEventDispatcher } from 'svelte'
 	import DoubleArrowLeftBg from '../../icons/DoubleArrowLeftBg.svelte';
 	import DoubleArrowRightBg from '../../icons/DoubleArrowRightBg.svelte';
@@ -12,20 +12,20 @@
 	export let startIndex = 0
 	export let draggable = true
 	export let multipleDrag = true	
-	export let dots = false	
+	export let dots = true	
 	export let controls = true
 	export let threshold = 20
 	export let rtl = false
 	let currentIndex = startIndex;
 	
-	let siema
+	let siema: string
 	let controller: Siema
 	let timer: NodeJS.Timeout
 	const dispatch = createEventDispatcher()
 	
 	$: pips = controller ? controller.innerElements : []
 	$: currentPerPage = controller ? controller.perPage : perPage
-	$: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
+	$: totalDots = controller ? controller.innerElements.length : []
 	
 	onMount(() => {
 		controller = new Siema({
@@ -36,7 +36,7 @@
   			easing,
   			startIndex,
   			draggable,
- 			multipleDrag,
+				multipleDrag,
   			threshold,
   			rtl,
 			onChange: handleChange
@@ -49,8 +49,22 @@
 		const carousel: HTMLElement | null = document.querySelector(".carousel")
 		if (carousel) {carousel.style.opacity = "100%"}
 
-		const slides: HTMLElement | null = document.querySelector(".slides")
-		// slides.style.overflow = "visible"
+		// const slides: HTMLElement | null = document.querySelector(".slides")
+		// // slides.style.overflow = "visible"
+
+		// const mobileMediaQuery = window.matchMedia('(max-width: 480px)')
+
+		// function setNumberOfSlides(mobileMediaQuery:MediaQueryList) {
+		// 	if (mobileMediaQuery.matches) { 
+		// 		controller.config.perPage = 1
+		// 	} else {
+		// 		controller.config.perPage = 5
+		// 	}
+		// }
+
+
+		// setNumberOfSlides(mobileMediaQuery)
+		// mobileMediaQuery.addListener(() => setNumberOfSlides)
 
 		return () => {
 			autoplay && clearInterval(timer)
@@ -71,7 +85,7 @@
 		controller.next()
 	}
 	
-	export function go (index) {
+	export function go (index:number) {
 		controller.goTo(index)
 	}
 	
@@ -85,7 +99,7 @@
 		}
 	}
 	
-	function handleChange (event) {
+	function handleChange () {
 		currentIndex = controller.currentSlide
 		dispatch('change', {
 			currentSlide: controller.currentSlide,
@@ -93,8 +107,8 @@
 		} )
 	}
 	
-	function resetInterval(node, condition) {
-		function handleReset(event) {
+	function resetInterval(node:Node, condition: Number) {
+		function handleReset(event: Event) {
 			pause();
 			resume();
 		}
@@ -109,20 +123,6 @@
 		  }
 	  }
   }
-
-	// const mobileMediaQuery = window.matchMedia('(min-width: 0px)')
-
-	// function setNumberOfSlides(x) {
-	// 	if (x.matches) { // If media query matches
-	// 		document.body.style.backgroundColor = "yellow";
-	// 	} else {
-	// 		document.body.style.backgroundColor = "pink";
-	// 	}
-	// }
-
-	// const x = window.matchMedia("(max-width: 700px)")
-	// myFunction(x) // Call listener function at run time
-	// x.addListener(myFunction) // Attach listener function on state changes
 
 </script>
 
