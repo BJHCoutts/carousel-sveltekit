@@ -12,9 +12,6 @@
 		const activeFrame = this.querySelector(".active-frame")
 		activeFrame.style.opacity = 100
 
-		// this.style.transform = "scale(1.05)"
-		// this.style.height = this.style.height * .01
-		// this.style.width = this.style.width * .01
 	}
 
 	function deactivateCard() {

@@ -5,15 +5,15 @@
 
 	export let data:{cardsData:card[]}
 	const {cardsData} = data
+	let autoplay = 2200
 
 </script>
 
-<Carousel>
+<Carousel bind:autoplay >
 	
 	{#each cardsData as cardData, index (index)}
-	<CardBaked {cardData}/>
+	<CardBaked {cardData} />
 	{/each}
-
 
 </Carousel>
 

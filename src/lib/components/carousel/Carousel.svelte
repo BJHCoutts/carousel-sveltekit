@@ -2,8 +2,6 @@
 
 	<div class="slides" bind:this={siema}>
 		<slot/>
-		
-		
 	</div>
 
 	{#if controls}
@@ -27,7 +25,7 @@
 				<li
 					on:click={() => go(i*currentPerPage)} 
 					on:keypress={() => go(i*currentPerPage)} 
-					class={isDotActive(currentIndex, i) ? "active" : ""}
+					class={isDotActive(currentIndex, i) ? "active dot" : "dot"}
 					role='button'
 					tabindex={i}
 				/>
@@ -42,6 +40,8 @@
 		width: 100%;
 		justify-content: center;
 		align-items: center;
+		opacity: 0;
+		transition: opacity .2s ease-in;
 	}
 	
 	button {
@@ -76,6 +76,10 @@
 		margin-top: -30px;
 		padding: 0;
 	}
+
+	.dot {
+		cursor: pointer;
+	}
 	ul li {
 		margin: 6px;
 		border-radius: 100%;
@@ -89,6 +93,7 @@
 	ul li.active {
 		background-color: rgba(255,255,255,1);
 	}
+
 </style>
 
 <script>
@@ -101,7 +106,7 @@
 	
 	export let perPage = 5
 	export let loop = true
-	export let autoplay = 0
+	export let autoplay = 2200
 	export let duration = 200
 	export let easing = 'ease-in'
 	export let startIndex = 0
@@ -140,6 +145,10 @@
 		if(autoplay) {
 			timer = setInterval(right, autoplay);
 		}
+
+		const carousel = document.querySelector(".carousel")
+		carousel.style.opacity = "100%"
+
 		return () => {
 			autoplay && clearInterval(timer)
 			controller.destroy()
