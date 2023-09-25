@@ -11,7 +11,6 @@
 	
 		const activeFrame = this.querySelector(".active-frame")
 		activeFrame.style.opacity = 100
-
 	}
 
 	function deactivateCard() {

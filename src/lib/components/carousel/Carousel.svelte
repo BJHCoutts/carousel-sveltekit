@@ -1,7 +1,11 @@
-<div class="carousel">
+<div 
+	class="carousel" 
+	on:mouseenter={() => clearInterval(timer)}
+	on:mouseleave={() => timer = setInterval(right, autoplay)}
+>
 
 	<div class="slides" bind:this={siema}>
-		<slot/>
+		<slot />
 	</div>
 
 	{#if controls}
@@ -99,8 +103,6 @@
 <script>
 	import Siema from 'siema'
 	import { onMount, createEventDispatcher } from 'svelte'
-	import DoubleArrowLeftIcon from '../../icons/DoubleArrowLeftIcon.svelte';
-	import DoubleArrowRightIcon from '../../icons/DoubleArrowRightIcon.svelte';
 	import DoubleArrowLeftBg from '../../icons/DoubleArrowLeftBg.svelte';
 	import DoubleArrowRightBg from '../../icons/DoubleArrowRightBg.svelte';
 	
@@ -206,4 +208,5 @@
 		  }
 	  }
   }
+
 </script>
