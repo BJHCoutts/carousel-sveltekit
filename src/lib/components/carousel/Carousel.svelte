@@ -1,7 +1,136 @@
+<script lang='ts'>
+	import Siema from 'siema'
+	import { onMount, createEventDispatcher } from 'svelte'
+	import DoubleArrowLeftBg from '../../icons/DoubleArrowLeftBg.svelte';
+	import DoubleArrowRightBg from '../../icons/DoubleArrowRightBg.svelte';
+	
+	export let perPage = 5
+	export let loop = true
+	export let autoplay = 2000
+	export let duration = 250
+	export let easing = 'ease-in'
+	export let startIndex = 0
+	export let draggable = true
+	export let multipleDrag = true	
+	export let dots = false	
+	export let controls = true
+	export let threshold = 20
+	export let rtl = false
+	let currentIndex = startIndex;
+	
+	let siema
+	let controller: Siema
+	let timer: NodeJS.Timeout
+	const dispatch = createEventDispatcher()
+	
+	$: pips = controller ? controller.innerElements : []
+	$: currentPerPage = controller ? controller.perPage : perPage
+	$: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
+	
+	onMount(() => {
+		controller = new Siema({
+			selector: siema,
+			perPage: typeof perPage === 'object' ? perPage : Number(perPage),
+			loop,
+  			duration,
+  			easing,
+  			startIndex,
+  			draggable,
+ 			multipleDrag,
+  			threshold,
+  			rtl,
+			onChange: handleChange
+		})
+		
+		if(autoplay) {
+			timer = setInterval(right, autoplay);
+		}
+
+		const carousel: HTMLElement | null = document.querySelector(".carousel")
+		if (carousel) {carousel.style.opacity = "100%"}
+
+		const slides: HTMLElement | null = document.querySelector(".slides")
+		// slides.style.overflow = "visible"
+
+		return () => {
+			autoplay && clearInterval(timer)
+			controller.destroy()
+		}
+	})
+	
+	export function isDotActive (currentIndex:number, dotIndex:number) {
+        if (currentIndex < 0) currentIndex = pips.length + currentIndex;
+        return currentIndex >= dotIndex*currentPerPage && currentIndex < (dotIndex*currentPerPage)+currentPerPage
+    }
+	
+	export function left () {
+		controller.prev()
+	}
+	
+	export function right () {
+		controller.next()
+	}
+	
+	export function go (index) {
+		controller.goTo(index)
+	}
+	
+	export function pause() {
+		clearInterval(timer);
+	}
+	
+	export function resume() {
+		if (autoplay) {
+			timer = setInterval(right, autoplay);
+		}
+	}
+	
+	function handleChange (event) {
+		currentIndex = controller.currentSlide
+		dispatch('change', {
+			currentSlide: controller.currentSlide,
+			slideCount: controller.innerElements.length
+		} )
+	}
+	
+	function resetInterval(node, condition) {
+		function handleReset(event) {
+			pause();
+			resume();
+		}
+		
+		if(condition) {
+			node.addEventListener('click', handleReset);
+		}
+		
+		return {
+		  destroy() {
+			  node.removeEventListener('click', handleReset);
+		  }
+	  }
+  }
+
+	// const mobileMediaQuery = window.matchMedia('(min-width: 0px)')
+
+	// function setNumberOfSlides(x) {
+	// 	if (x.matches) { // If media query matches
+	// 		document.body.style.backgroundColor = "yellow";
+	// 	} else {
+	// 		document.body.style.backgroundColor = "pink";
+	// 	}
+	// }
+
+	// const x = window.matchMedia("(max-width: 700px)")
+	// myFunction(x) // Call listener function at run time
+	// x.addListener(myFunction) // Attach listener function on state changes
+
+</script>
+
 <div 
 	class="carousel" 
-	on:mouseenter={() => clearInterval(timer)}
-	on:mouseleave={() => timer = setInterval(right, autoplay)}
+	on:mouseenter={() => pause()}
+	on:mouseleave={() => resume()}
+	role='banner'
 >
 
 	<div class="slides" bind:this={siema}>
@@ -99,114 +228,3 @@
 	}
 
 </style>
-
-<script>
-	import Siema from 'siema'
-	import { onMount, createEventDispatcher } from 'svelte'
-	import DoubleArrowLeftBg from '../../icons/DoubleArrowLeftBg.svelte';
-	import DoubleArrowRightBg from '../../icons/DoubleArrowRightBg.svelte';
-	
-	export let perPage = 5
-	export let loop = true
-	export let autoplay = 2200
-	export let duration = 200
-	export let easing = 'ease-in'
-	export let startIndex = 0
-	export let draggable = true
-	export let multipleDrag = true	
-	export let dots = true	
-	export let controls = true
-	export let threshold = 20
-	export let rtl = false
-	let currentIndex = startIndex;
-	
-	let siema
-	let controller
-	let timer
-	const dispatch = createEventDispatcher()
-	
-	$: pips = controller ? controller.innerElements : []
-	$: currentPerPage = controller ? controller.perPage : perPage
-	$: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
-	
-	onMount(() => {
-		controller = new Siema({
-			selector: siema,
-			perPage: typeof perPage === 'object' ? perPage : Number(perPage),
-			loop,
-  			duration,
-  			easing,
-  			startIndex,
-  			draggable,
- 			multipleDrag,
-  			threshold,
-  			rtl,
-			onChange: handleChange
-		})
-		
-		if(autoplay) {
-			timer = setInterval(right, autoplay);
-		}
-
-		const carousel = document.querySelector(".carousel")
-		carousel.style.opacity = "100%"
-
-		return () => {
-			autoplay && clearInterval(timer)
-			controller.destroy()
-		}
-	})
-	
-	export function isDotActive (currentIndex, dotIndex) {
-        if (currentIndex < 0) currentIndex = pips.length + currentIndex;
-        return currentIndex >= dotIndex*currentPerPage && currentIndex < (dotIndex*currentPerPage)+currentPerPage
-    }
-	
-	export function left () {
-		controller.prev()
-	}
-	
-	export function right () {
-		controller.next()
-	}
-	
-	export function go (index) {
-		controller.goTo(index)
-	}
-	
-	export function pause() {
-		clearInterval(timer);
-	}
-	
-	export function resume() {
-		if (autoplay) {
-			timer = setInterval(right, autoplay);
-		}
-	}
-	
-	function handleChange (event) {
-		currentIndex = controller.currentSlide
-		dispatch('change', {
-			currentSlide: controller.currentSlide,
-			slideCount: controller.innerElements.length
-		} )
-	}
-	
-	function resetInterval(node, condition) {
-		function handleReset(event) {
-			pause();
-			resume();
-		}
-		
-		if(condition) {
-			node.addEventListener('click', handleReset);
-		}
-		
-		return {
-		  destroy() {
-			  node.removeEventListener('click', handleReset);
-		  }
-	  }
-  }
-
-</script>
