@@ -125,23 +125,4 @@
 		cursor: pointer;
 	}
 
-
-
-	.card-text {
-		position: absolute;
-		color: $text-color;
-		inset: 25px 35px;
-		display: grid;
-	}
-
-	.card-title {
-		text-align: center;
-		font-weight: 600;
-		margin-top: 0;
-	}
-
-	.card-description {
-		font-size: .9rem;
-	}
-
 </style>
