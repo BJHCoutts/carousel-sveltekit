@@ -8,11 +8,4 @@
 
 </script>
 
-<Carousel >
-	
-	{#each cardsData as cardData, index (index)}
-	<CardBaked {cardData} />
-	{/each}
-
-</Carousel>
-
+<Carousel {cardsData} />
