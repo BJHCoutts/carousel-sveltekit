@@ -9,7 +9,7 @@
 
 	function activateCard() {
 	
-		const activeFrame = this.querySelector(".active-frame")
+		const activeFrame = this
 		activeFrame.style.opacity = 100
 
 		// this.style.transform = "scale(1.05)"
@@ -19,7 +19,7 @@
 
 	function deactivateCard() {
 
-		const activeFrame = this.querySelector(".active-frame")
+		const activeFrame = this
 		activeFrame.style.opacity = 0
 
 		// this.style.transform = "scale(1)"
@@ -35,7 +35,7 @@
 	role='none'
 >
 	
-	<div class="active-frame">
+	<!-- <div class="active-frame">
 
 		<div class="card-text-container">
 			
@@ -54,7 +54,7 @@
 		
 	<img class='card-image' src={bgImagePath} alt={bgImageAltText}>
 
-</div>
+</div> -->
 
 
 <style lang='scss'>

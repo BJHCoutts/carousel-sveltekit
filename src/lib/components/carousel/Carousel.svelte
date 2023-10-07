@@ -24,5 +24,11 @@
 		position: relative;
 		width: 100%;
 	}
+
+	.track {
+		display: flex;
+		/* justify-content: space-between; */
+		gap: 1em;
+	}
 	
 </style>

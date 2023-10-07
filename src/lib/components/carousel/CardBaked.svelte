@@ -9,9 +9,10 @@
 
 	function activateCard(this:HTMLElement) {
 	
+		const cardContainer: HTMLElement | null = this
 		const activeFrame: HTMLElement | null = this.querySelector('.active-frame')
 		if (activeFrame) {activeFrame.style.opacity = '100'}
-		if (activeFrame) {activeFrame.style.transform = 'scale(1.1)'}
+		if (cardContainer) {cardContainer.style.transform = 'scale(1.1)'}
 		
 		const video = this.querySelector('video')
 		video?.play()
@@ -19,9 +20,10 @@
 
 	function deactivateCard(this:HTMLElement) {
 
+		const cardContainer: HTMLElement | null = this
 		const activeFrame: HTMLElement | null = this.querySelector('.active-frame')
 		if (activeFrame) {activeFrame.style.opacity = '0'}
-		if (activeFrame) {activeFrame.style.transform = 'scale(1)'}
+		if (cardContainer) {cardContainer.style.transform = 'scale(1)'}
 
 		const video = this.querySelector('video')
 		video?.pause()
@@ -62,7 +64,8 @@
 		cursor: pointer;
 		transition: 
 			height .2s ease-in,
-			width .2s ease-in
+			width .2s ease-in,
+			transform .2s ease-in
 		;
 	}
 
@@ -71,11 +74,13 @@
 		height: 100%;
 		width:100%;
 		opacity: 0;
+		border-radius: 10px;
 		transition: 
 			opacity .2s ease-in,
 			transform .2s ease-in,
 		;
 		border-radius: 10px;
+		overflow: hidden;
 	}
 
 	.card-image {
