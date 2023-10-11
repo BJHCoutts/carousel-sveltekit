@@ -12,7 +12,8 @@
 		const cardContainer: HTMLElement | null = this
 		const activeFrame: HTMLElement | null = this.querySelector('.active-frame')
 		if (activeFrame) {activeFrame.style.opacity = '100'}
-		if (cardContainer) {cardContainer.style.transform = 'scale(1.1)'}
+		if (cardContainer) {cardContainer.style.height = `${262 * 1.1}px`}
+		if (cardContainer) {cardContainer.style.width = `${210 * 1.1}px`}
 		
 		const video = this.querySelector('video')
 		video?.play()
@@ -23,7 +24,8 @@
 		const cardContainer: HTMLElement | null = this
 		const activeFrame: HTMLElement | null = this.querySelector('.active-frame')
 		if (activeFrame) {activeFrame.style.opacity = '0'}
-		if (cardContainer) {cardContainer.style.transform = 'scale(1)'}
+		if (cardContainer) {cardContainer.style.height = '262px'}
+		if (cardContainer) {cardContainer.style.width = '210px'}
 
 		const video = this.querySelector('video')
 		video?.pause()
@@ -56,6 +58,11 @@
 
 <style lang='scss'>
 
+	button {
+		color: $accent-color;
+		font-weight: 600;
+	}
+
 	.card-container {
 		position: relative;
 		height: 262px;
@@ -67,6 +74,9 @@
 			width .2s ease-in,
 			transform .2s ease-in
 		;
+		flex-shrink: 0;
+		scroll-snap-align: start;
+		display: inline-block;
 	}
 
 	.active-frame {
