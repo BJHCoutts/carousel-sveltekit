@@ -1,12 +1,4 @@
-<style lang='scss'>
-
-	.pointing-right-finger-path {
-		fill: $accent-color;
-	}
-
-</style>
-
-<svg fill="none" height="1.5em" width="1.5em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+<svg fill="var(--accent-color)" height="1.5em" width="1.5em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512 512" xml:space="preserve">
 <g transform="translate(1 1)">
 	<g>

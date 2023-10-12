@@ -56,10 +56,10 @@
 
 </div>
 
-<style lang='scss'>
+<style>
 
 	button {
-		color: $accent-color;
+		color: var(--accent-color);
 		font-weight: 600;
 	}
 

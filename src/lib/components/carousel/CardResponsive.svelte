@@ -57,7 +57,7 @@
 </div> -->
 
 
-<style lang='scss'>
+<style>
 
 	.card-container {
 		position: relative;
@@ -117,7 +117,7 @@
 
 	.card-text {
 		position: absolute;
-		color: $text-color;
+		color: var(--text-color);
 		inset: 25px 35px;
 		display: grid;
 	}

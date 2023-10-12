@@ -58,7 +58,7 @@
 	<div class="card" on:mouseenter={onHW} on:mouseleave={offHW} style='background: yellow;'></div>
 </div> -->
 
-<style lang='scss'>
+<style>
 	
 	.carousel {
 		position: relative;
@@ -70,7 +70,7 @@
 	}
 	
 	.track {
-		// position: relative;
+		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -84,10 +84,14 @@
 	}
 
 	.button-container-prev {
+		top: 0;
+		bottom: 0;
 		left: 0;
 	}
 	
 	.button-container-next {
+		top: 0;
+		bottom: 0;
 		right: 0;
 	}
 	.button-container {
@@ -96,26 +100,30 @@
 		height: 100%;
 		width: 150px;
 		background-color: hsla(0,0%,0%, .7);
+		display: grid;
+		place-items: center flex-start;
+	}
 
-		button {
-			border: none;
-			
-			svg {
+	button {
+		border: none;
+		background: none;
+	}
+		
+	svg {
 				top: 50%;
 				transform: translateY(-50%);
 				height: 100px;
-				background: none;;
-			}
-	
-			.prev {
-				left: 0;
-			}
-	
-			.next {
-				right: 0;
-			}
-		}
+				background: none;
 	}
+
+	.prev {
+		left: 0;
+	}
+
+	.next {
+		right: 0;
+	}
+
 	/* .test {
 		height: 25px;
 		overflow-y:visible;
