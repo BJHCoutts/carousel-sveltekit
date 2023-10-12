@@ -22,23 +22,24 @@
 
 	<div class="track">
 
-		<div class="button-container button-container-prev">
-			<button class="prev">
-				<DoubleArrowLeftBg/>
-			</button>
-		</div>
-
-		<div class="button-container button-container-next">
-			<button class="next">
-				<DoubleArrowRightBg/>
-			</button>
-		</div>
+		{#each cardsData as cardData, index (index)}
+		<CardBaked {cardData} />
+		{/each}
 
 	</div>
+	<div class="button-container button-container-prev">
+		<button class="prev">
+			<DoubleArrowLeftBg/>
+		</button>
+	</div>
 
-		<!-- {#each cardsData as cardData, index (index)}
-		<CardBaked {cardData} />
-		{/each} -->
+	<div class="button-container button-container-next">
+		<button class="next">
+			<DoubleArrowRightBg/>
+		</button>
+	</div>
+
+
 
 </section>
 
@@ -78,6 +79,7 @@
 		bottom: 0;
 		right: 0;
 	}
+
 	.button-container {
 		position: absolute;
 		z-index: 3;
@@ -86,16 +88,10 @@
 		background-color: hsla(0,0%,0%, .7);
 		display: grid;
 	}
+
 	button {
 		border: none;
 		background: none;
-	}
-		
-	svg {
-				top: 50%;
-				transform: translateY(-50%);
-				height: 100px;
-				background: none;
 	}
 
 	.prev {
