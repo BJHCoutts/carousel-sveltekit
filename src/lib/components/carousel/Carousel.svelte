@@ -10,18 +10,9 @@
 	export let cardsData:card[]
 
 	onMount( () => {
-		const track:HTMLElement = document.querySelector('.track')
+		const track:HTMLElement|null = document.querySelector('.track')
 		if (track) {track.style.opacity = '100'}
 	})
-
-	// function onHW(this:HTMLElement) {
-	// 	this.style.height = '40px'
-	// 	this.style.width = '40px'
-	// }
-	// function offHW(this:HTMLElement) {
-	// 	this.style.height = '25px'
-	// 	this.style.width = '25px'
-	// }
 
 </script>
 
@@ -45,18 +36,11 @@
 
 	</div>
 
-		{#each cardsData as cardData, index (index)}
+		<!-- {#each cardsData as cardData, index (index)}
 		<CardBaked {cardData} />
-		{/each}
+		{/each} -->
 
 </section>
-	
-<!-- <div class='test'>
-	<div class="card" on:mouseenter={onHW} on:mouseleave={offHW} style='background: red;'></div>
-	<div class="card" on:mouseenter={onHW} on:mouseleave={offHW} style='background: blue;'></div>
-	<div class="card" on:mouseenter={onHW} on:mouseleave={offHW} style='background: green;'></div>
-	<div class="card" on:mouseenter={onHW} on:mouseleave={offHW} style='background: yellow;'></div>
-</div> -->
 
 <style>
 	
@@ -101,9 +85,7 @@
 		width: 150px;
 		background-color: hsla(0,0%,0%, .7);
 		display: grid;
-		place-items: center flex-start;
 	}
-
 	button {
 		border: none;
 		background: none;
@@ -117,31 +99,11 @@
 	}
 
 	.prev {
-		left: 0;
+		place-self: center flex-start;
 	}
 
 	.next {
-		right: 0;
+		place-self: center flex-end;
 	}
-
-	/* .test {
-		height: 25px;
-		overflow-y:visible;
-		overflow-x: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 10px;
-	}
-
-	.card {
-		height: 25px; 
-		width: 25px; 
-		display: inline-block; 
-		transition: 
-			height .3s ease-in,
-			width .3s ease-in
-		;
-	} */
 	
 </style>
