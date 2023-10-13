@@ -1,11 +1,12 @@
 <script lang='ts'>
 	import { onMount } from "svelte";
-
+	import { flip } from 'svelte/animate'
 
 	import DoubleArrowLeftBg from "../../icons/DoubleArrowLeftBg.svelte";
 	import DoubleArrowRightBg from "../../icons/DoubleArrowRightBg.svelte";
 	import CardBaked from "./CardBaked.svelte";
 	import type { card } from "./types";
+	import { scrollIntoView } from "../../utils/scrollIntoView";
 
 	export let cardsData:card[]
 
@@ -22,11 +23,14 @@
 
 	<div class="track">
 
-		{#each cardsData as cardData, index (index)}
-		<CardBaked {cardData} />
+		{#each cardsData as cardData, i (cardData.title)}
+			<a id={`card-${i}`} animate:flip>
+				<CardBaked {cardData} />
+			</a>
 		{/each}
 
 	</div>
+
 	<div class="button-container button-container-prev">
 		<button class="prev">
 			<DoubleArrowLeftBg/>
@@ -39,9 +43,31 @@
 		</button>
 	</div>
 
-
+	<nav>
+		<ul>
+			{#each cardsData as {title}, i}
+				<li>
+					<a class='dot' href={`#card-${i}`} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
+						{i}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
 
 </section>
+
+<nav>
+	<ul class='card-list'>
+		{#each cardsData as {title}, i}
+			<li>
+				<a href={`#card-${i}`} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
+					{i}. {title}
+				</a>
+			</li>
+		{/each}
+	</ul>
+</nav>
 
 <style>
 	
@@ -100,6 +126,15 @@
 
 	.next {
 		place-self: center flex-end;
+	}
+
+	.dot {
+		border-radius: 50%;
+		background-color: hsla(0,0%,50%, 1);
+	}
+
+	.card-list {
+		text-align: center;
 	}
 	
 </style>
