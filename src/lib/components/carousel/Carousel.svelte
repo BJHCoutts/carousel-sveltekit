@@ -15,6 +15,14 @@
 		if (track) {track.style.opacity = '100'}
 	})
 
+	function handlePrev() {
+		cardsData = [cardsData[cardsData.length-1], ...cardsData.slice(0, cardsData.length-1)]
+	}
+
+	function handleNext() {
+		cardsData = [...cardsData.slice(1, cardsData.length), cardsData[0]]
+	}
+
 </script>
 
 <section 
@@ -32,13 +40,13 @@
 	</div>
 
 	<div class="button-container button-container-prev">
-		<button class="prev">
+		<button class="prev" on:click={handlePrev}>
 			<DoubleArrowLeftBg/>
 		</button>
 	</div>
 
 	<div class="button-container button-container-next">
-		<button class="next">
+		<button class="next" on:click={handleNext}>
 			<DoubleArrowRightBg/>
 		</button>
 	</div>
@@ -62,7 +70,7 @@
 		{#each cardsData as {title}, i}
 			<li>
 				<a href={`#card-${i}`} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
-					{i}. {title}
+					{title}
 				</a>
 			</li>
 		{/each}
@@ -92,6 +100,11 @@
 		height: 350px;
 		transition: opacity .3s ease-in;
 		opacity: 0;
+		scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+	}
+	.track::-webkit-scrollbar { 
+			display: none; /* Chrome, Safari, Opera */ 
 	}
 
 	.button-container-prev {
@@ -118,6 +131,7 @@
 	button {
 		border: none;
 		background: none;
+		cursor: pointer;
 	}
 
 	.prev {
