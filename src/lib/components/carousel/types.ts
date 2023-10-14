@@ -1,4 +1,5 @@
 export type card = {
+	id: number,
 	title: string,
 	description: string,
 	bgImagePath: string,

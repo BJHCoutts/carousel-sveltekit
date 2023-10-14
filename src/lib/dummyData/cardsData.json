@@ -1,6 +1,7 @@
 {
 	"cardsData": [
 		{
+			"id": 1,
 			"title": "Card 1 Title",
 			"description": "<p>This is a description for Card 1, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/1.jpg",
@@ -9,6 +10,7 @@
 			"bgVideoCaptions": "Card 1 Video Captions"
 		},
 		{
+			"id": 2,
 			"title": "Card 2 Title",
 			"description": "<p>This is a description for Card 2, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/2.webp",
@@ -17,6 +19,7 @@
 			"bgVideoCaptions": "Card 2 Video Captions"
 		},
 		{
+			"id": 3,
 			"title": "Card 3 Title",
 			"description": "<p>This is a description for Card 3, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/3.jpg",
@@ -25,6 +28,7 @@
 			"bgVideoCaptions": "Card 3 Video Captions"
 		},
 		{
+			"id":4,
 			"title": "Card 4 Title",
 			"description": "<p>This is a description for Card 4, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/4.webp",
@@ -33,6 +37,7 @@
 			"bgVideoCaptions": "Card 4 Video Captions"
 		},
 		{
+			"id": 5,
 			"title": "Card 5 Title",
 			"description": "<p>This is a description for Card 5, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/5.webp",
@@ -41,6 +46,7 @@
 			"bgVideoCaptions": "Card 5 Video Captions"
 		},
 		{
+			"id": 6,
 			"title": "Card 6 Title",
 			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/6.jpg",
@@ -49,6 +55,7 @@
 			"bgVideoCaptions": "Card 6 Video Captions"
 		},
 		{
+			"id": 7,
 			"title": "Card 7 Title",
 			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/7.jpeg",

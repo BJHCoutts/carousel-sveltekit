@@ -10,17 +10,35 @@
 
 	export let cardsData:card[]
 
+	export let duration = 500
+
 	onMount( () => {
 		const track:HTMLElement|null = document.querySelector('.track')
 		if (track) {track.style.opacity = '100'}
 	})
 
 	function handlePrev() {
+		
+		const flipCardData = cardsData[cardsData.length-1]
+		const flipCard = document.getElementById(flipCardData.id.toString())
+		
+		if (!flipCard) {return}
+		
 		cardsData = [cardsData[cardsData.length-1], ...cardsData.slice(0, cardsData.length-1)]
+		
+		flipCard.style.opacity = '0'
+		setTimeout( () => {flipCard.style.opacity = '1'}, duration)
 	}
 
 	function handleNext() {
+		const flipCardData = cardsData[0]
+		const flipCard = document.getElementById(flipCardData.id.toString())
+
+		if (!flipCard) {return}
+
 		cardsData = [...cardsData.slice(1, cardsData.length), cardsData[0]]
+		flipCard.style.opacity = '0'
+		setTimeout( () => {flipCard.style.opacity = '1'}, duration)
 	}
 
 </script>
@@ -31,8 +49,8 @@
 
 	<div class="track">
 
-		{#each cardsData as cardData, i (cardData.title)}
-			<a id={`card-${i}`} animate:flip>
+		{#each cardsData as cardData (cardData.id)}
+			<a id={cardData.id.toString()} class='card-link' animate:flip={{duration}}>
 				<CardBaked {cardData} />
 			</a>
 		{/each}
@@ -51,31 +69,31 @@
 		</button>
 	</div>
 
-	<nav>
+	<!-- <nav>
 		<ul>
-			{#each cardsData as {title}, i}
+			{#each cardsData as {id}}
 				<li>
-					<a class='dot' href={`#card-${i}`} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
+					<a class='dot' href={id.toString()} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
 						{i}
 					</a>
 				</li>
 			{/each}
 		</ul>
-	</nav>
+	</nav> -->
 
 </section>
 
-<nav>
+<!-- <nav>
 	<ul class='card-list'>
-		{#each cardsData as {title}, i}
+		{#each cardsData as {id, title}}
 			<li>
-				<a href={`#card-${i}`} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
+				<a href={id.toString()} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
 					{title}
 				</a>
 			</li>
 		{/each}
 	</ul>
-</nav>
+</nav> -->
 
 <style>
 	
@@ -149,6 +167,10 @@
 
 	.card-list {
 		text-align: center;
+	}
+
+	.card-link {
+		transition: opacity .25s ease-in;
 	}
 	
 </style>
