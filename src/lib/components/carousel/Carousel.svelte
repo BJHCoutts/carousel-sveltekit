@@ -69,17 +69,15 @@
 		</button>
 	</div>
 
-	<!-- <nav>
+	<nav class='dot-nav'>
 		<ul>
-			{#each cardsData as {id}}
-				<li>
-					<a class='dot' href={id.toString()} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
-						{i}
+			{#each cardsData as {id} (id)}
+					<a href={id.toString()} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
+						<li class='dot' >{id}</li>
 					</a>
-				</li>
 			{/each}
 		</ul>
-	</nav> -->
+	</nav>
 
 </section>
 
@@ -111,7 +109,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 10px;
+		gap: 25px;
 		scroll-snap-type: x mandatory;
 		width: 100%;
 		overflow-x: auto;
@@ -135,13 +133,14 @@
 		top: 0;
 		bottom: 0;
 		right: 0;
+		mask-image: linear-gradient(to right, transparent, transparent);
 	}
 
 	.button-container {
 		position: absolute;
 		z-index: 3;
 		height: 100%;
-		width: 150px;
+		width: 100px;
 		background-color: hsla(0,0%,0%, .7);
 		display: grid;
 	}
@@ -160,17 +159,36 @@
 		place-self: center flex-end;
 	}
 
-	.dot {
-		border-radius: 50%;
-		background-color: hsla(0,0%,50%, 1);
-	}
-
 	.card-list {
 		text-align: center;
 	}
 
 	.card-link {
 		transition: opacity .25s ease-in;
+	}
+
+	.dot-nav {
+		position:absolute;
+		z-index: 3;
+		justify-content: center;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.dot-nav ul {
+		display: flex;
+		gap: 10px;
+	}
+
+	.dot {
+		border-radius: 50%;
+		background-color: hsla(0,0%,50%, 1);
+		height: 25px;
+		width: 25px;
+		display: grid;
+		place-items: center;
+		color: var(--text-color);
 	}
 	
 </style>

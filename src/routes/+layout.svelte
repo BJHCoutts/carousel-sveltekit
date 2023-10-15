@@ -12,6 +12,11 @@
 		padding: 0;
 	}
 
+	:global(a) {
+		text-decoration: none;
+		color: inherit;
+	}
+
 	:global(p) {
 		line-height: 1.25em;
 	}

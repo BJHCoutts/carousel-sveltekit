@@ -11,9 +11,15 @@
 	
 		const cardContainer: HTMLElement | null = this
 		const activeFrame: HTMLElement | null = this.querySelector('.active-frame')
-		if (activeFrame) {activeFrame.style.opacity = '100'}
-		if (cardContainer) {cardContainer.style.height = `${262 * 1.1}px`}
-		if (cardContainer) {cardContainer.style.width = `${210 * 1.1}px`}
+
+		if (!activeFrame) {
+			console.error('no active frame')
+			return
+		}
+
+		activeFrame.style.opacity = '100'
+		cardContainer.style.height = `${262 * 1.1}px`
+		cardContainer.style.width = `${210 * 1.1}px`
 		
 		const video = this.querySelector('video')
 		video?.play()
@@ -85,10 +91,7 @@
 		width:100%;
 		opacity: 0;
 		border-radius: 10px;
-		transition: 
-			opacity .2s ease-in,
-			transform .2s ease-in,
-		;
+		transition: opacity .25s ease-in;
 		border-radius: 10px;
 		overflow: hidden;
 	}
