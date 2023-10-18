@@ -14,6 +14,8 @@
 
 	export let duration = 500
 
+	let isPlaying = false
+
 	onMount( () => {
 		const track:HTMLElement|null = document.querySelector('.track')
 		if (track) {track.style.opacity = '100'}
@@ -41,6 +43,13 @@
 		cardsData = [...cardsData.slice(1, cardsData.length), cardsData[0]]
 		flipCard.style.opacity = '0'
 		setTimeout( () => {flipCard.style.opacity = '1'}, duration)
+	}
+
+	let playInterval = setInterval(() => {})
+
+	function handlePlay() {
+		isPlaying?clearInterval(playInterval):playInterval = setInterval( () => handleNext(), 1000)
+		isPlaying = !isPlaying
 	}
 
 </script>
@@ -82,7 +91,16 @@
 	</nav>
 
 </section>
-<Play/><Stop/>
+
+<div class="play-icon-container">
+	<button class="play-icon-button" on:click={handlePlay}>
+		{#if isPlaying}
+			<Stop/>
+		{:else}
+			<Play/>
+		{/if}
+	</button>
+</div>
 
 <!-- <nav>
 	<ul class='card-list'>
@@ -197,6 +215,13 @@
 		display: grid;
 		place-items: center;
 		color: var(--text-color);
+	}
+
+	.play-icon-container {
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		margin-top: 1em;
 	}
 	
 </style>
