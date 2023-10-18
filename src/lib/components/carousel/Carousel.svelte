@@ -7,6 +7,8 @@
 	import CardBaked from "./CardBaked.svelte";
 	import type { card } from "./types";
 	import { scrollIntoView } from "../../utils/scrollIntoView";
+	import Play from "../../icons/Play.svelte";
+	import Stop from "../../icons/Stop.svelte";
 
 	export let cardsData:card[]
 
@@ -80,6 +82,7 @@
 	</nav>
 
 </section>
+<Play/><Stop/>
 
 <!-- <nav>
 	<ul class='card-list'>
@@ -110,7 +113,7 @@
 		justify-content: center;
 		align-items: center;
 		gap: 25px;
-		scroll-snap-type: x mandatory;
+		/* scroll-snap-type: x mandatory; */
 		width: 100%;
 		overflow-x: auto;
 		height: 350px;
@@ -118,6 +121,8 @@
 		opacity: 0;
 		scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
+		-webkit-mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent);
+		mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent);
 	}
 	.track::-webkit-scrollbar { 
 			display: none; /* Chrome, Safari, Opera */ 
@@ -133,7 +138,6 @@
 		top: 0;
 		bottom: 0;
 		right: 0;
-		mask-image: linear-gradient(to right, transparent, transparent);
 	}
 
 	.button-container {
@@ -164,7 +168,11 @@
 	}
 
 	.card-link {
-		transition: opacity .25s ease-in;
+		transition: opacity .25s ease-in;		
+		flex-shrink: 0;
+		scroll-snap-align: start;
+		display: inline-block;
+
 	}
 
 	.dot-nav {

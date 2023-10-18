@@ -80,9 +80,6 @@
 			width .2s ease-in,
 			transform .2s ease-in
 		;
-		flex-shrink: 0;
-		scroll-snap-align: start;
-		display: inline-block;
 	}
 
 	.active-frame {
