@@ -6,12 +6,10 @@
 	import DoubleArrowRightBg from "../../icons/DoubleArrowRightBg.svelte";
 	import CardBaked from "./CardBaked.svelte";
 	import type { card } from "./types";
-	import { scrollIntoView } from "../../utils/scrollIntoView";
 	import Play from "../../icons/Play.svelte";
 	import Stop from "../../icons/Stop.svelte";
 
 	export let cardsData:card[]
-	let carouselInput = [...cardsData, ...cardsData, ...cardsData]
 
 	export let duration = 500
 
@@ -48,29 +46,28 @@
 
 	function handleScrollTo({currentTarget}: Event) {
 		if (!currentTarget) {return console.error("No currentTarget")}
-		const selectedCardIndex = currentTarget.getAttribute('href') - 1
+		const selectedCardIndex = parseInt(currentTarget.getAttribute('href'))
 
-		console.log(selectedCardIndex+1)
+		console.log(selectedCardIndex)
 
 		let firstHalfCards =[]
 		let lastHalfCards =[]
 
-		for(let index=0; index < Math.floor(cardsData.length/2); index++) {
+		for(let i=0; i < Math.floor(cardsData.length/2); i++) {
 
-			if ((selectedCardIndex + index + 2)>cardsData.length) {
-				lastHalfCards.push(cardsData[selectedCardIndex + index + 1 - cardsData.length])
+			if ((selectedCardIndex + (i+1))>(cardsData.length-1)) {
+				lastHalfCards.push(cardsData[selectedCardIndex + (i+1) - cardsData.length])
 			} else {
-				lastHalfCards.push(cardsData[selectedCardIndex + index + 1])
+				lastHalfCards.push(cardsData[selectedCardIndex + (i+1)])
 			}
 			
-			if ((selectedCardIndex - index -1) < 0) {
-				firstHalfCards.unshift(cardsData[selectedCardIndex - index + cardsData.length - 1])
+			if ((selectedCardIndex - i -1) < 0) {
+				firstHalfCards.unshift(cardsData[selectedCardIndex - i + cardsData.length - 1])
 			}else{
-				firstHalfCards.unshift(cardsData[selectedCardIndex - index - 1])
+				firstHalfCards.unshift(cardsData[selectedCardIndex - i - 1])
 			}
 		}
 
-		// cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
 		cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
 	}
 
@@ -130,18 +127,6 @@
 		{/if}
 	</button>
 </div>
-
-<!-- <nav>
-	<ul class='card-list'>
-		{#each cardsData as {id, title}}
-			<li>
-				<a href={id.toString()} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
-					{title}
-				</a>
-			</li>
-		{/each}
-	</ul>
-</nav> -->
 
 <style>
 	
