@@ -1,5 +1,5 @@
-export function scrollIntoView ({currentTarget}: Event) {
-	if (currentTarget){
+export function scrollIntoView ({currentTarget}: {currentTarget: HTMLElement}) {
+	if (currentTarget.getAttribute('id') === typeof String){
 		const scrollToElement = document.getElementById(currentTarget.getAttribute('id'))
 		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce')
 		if (!scrollToElement) {return}

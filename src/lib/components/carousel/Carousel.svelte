@@ -11,6 +11,7 @@
 	import Stop from "../../icons/Stop.svelte";
 
 	export let cardsData:card[]
+	let carouselInput = [...cardsData, ...cardsData, ...cardsData]
 
 	export let duration = 500
 
@@ -23,26 +24,54 @@
 
 	function handlePrev() {
 		
-		const flipCardData = cardsData[cardsData.length-1]
-		const flipCard = document.getElementById(flipCardData.id.toString())
+		const cardData = cardsData[cardsData.length-1]
+		const card = document.getElementById(cardData.id.toString())
 		
-		if (!flipCard) {return}
+		if (!card) {return console.error("No card element found")}
 		
 		cardsData = [cardsData[cardsData.length-1], ...cardsData.slice(0, cardsData.length-1)]
 		
-		flipCard.style.opacity = '0'
-		setTimeout( () => {flipCard.style.opacity = '1'}, duration)
+		card.style.opacity = '0'
+		setTimeout( () => {card.style.opacity = '1'}, duration)
 	}
 
 	function handleNext() {
-		const flipCardData = cardsData[0]
-		const flipCard = document.getElementById(flipCardData.id.toString())
+		const cardData = cardsData[0]
+		const card = document.getElementById(cardData.id.toString())
 
-		if (!flipCard) {return}
+		if (!card) {return console.error("No card element found")}
 
 		cardsData = [...cardsData.slice(1, cardsData.length), cardsData[0]]
-		flipCard.style.opacity = '0'
-		setTimeout( () => {flipCard.style.opacity = '1'}, duration)
+		card.style.opacity = '0'
+		setTimeout( () => {card.style.opacity = '1'}, duration)
+	}
+
+	function handleScrollTo({currentTarget}: Event) {
+		if (!currentTarget) {return console.error("No currentTarget")}
+		const selectedCardIndex = currentTarget.getAttribute('href') - 1
+
+		console.log(selectedCardIndex+1)
+
+		let firstHalfCards =[]
+		let lastHalfCards =[]
+
+		for(let index=0; index < Math.floor(cardsData.length/2); index++) {
+
+			if ((selectedCardIndex + index + 2)>cardsData.length) {
+				lastHalfCards.push(cardsData[selectedCardIndex + index + 1 - cardsData.length])
+			} else {
+				lastHalfCards.push(cardsData[selectedCardIndex + index + 1])
+			}
+			
+			if ((selectedCardIndex - index -1) < 0) {
+				firstHalfCards.unshift(cardsData[selectedCardIndex - index + cardsData.length - 1])
+			}else{
+				firstHalfCards.unshift(cardsData[selectedCardIndex - index - 1])
+			}
+		}
+
+		// cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
+		cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
 	}
 
 	let playInterval = setInterval(() => {})
@@ -83,7 +112,7 @@
 	<nav class='dot-nav'>
 		<ul>
 			{#each cardsData as {id} (id)}
-					<a href={id.toString()} on:click|preventDefault={scrollIntoView} on:keypress|preventDefault={scrollIntoView}>
+					<a href={id.toString()} on:click|preventDefault={handleScrollTo} on:keypress|preventDefault={handleScrollTo}>
 						<li class='dot' >{id}</li>
 					</a>
 			{/each}
