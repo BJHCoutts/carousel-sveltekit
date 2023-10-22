@@ -48,26 +48,35 @@
 		if (!currentTarget) {return console.error("No currentTarget")}
 		const selectedCardIndex = parseInt(target.innerText)
 
-		let firstHalfCards =[]
-		let lastHalfCards =[]
-
-		for(let i=0; i < Math.floor(cardsData.length/2); i++) {
-
-			if ((selectedCardIndex + (i+1))>(cardsData.length-1)) {
-				lastHalfCards.push(cardsData[selectedCardIndex + (i+1) - cardsData.length])
-			} else {
-				lastHalfCards.push(cardsData[selectedCardIndex + (i+1)])
-			}
-			
-			if ((selectedCardIndex - i -1) < 0) {
-				firstHalfCards.unshift(cardsData[selectedCardIndex - i + cardsData.length - 1])
-			}else{
-				firstHalfCards.unshift(cardsData[selectedCardIndex - i - 1])
-			}
+		if (selectedCardIndex > cardsData[Math.floor(cardsData.length/2)].id) {
+			const iterations = selectedCardIndex - cardsData[Math.floor(cardsData.length/2)].id
+			for(let i = 0; i < iterations; i++) handleNext()
+		}
+		if (selectedCardIndex < cardsData[Math.floor(cardsData.length/2)].id) {
+			const iterations = cardsData[Math.floor(cardsData.length/2)].id - selectedCardIndex
+			for(let i = 0; i < iterations; i++) handlePrev()
 		}
 
-		// console.log([...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards])
-		cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
+		// let firstHalfCards =[]
+		// let lastHalfCards =[]
+
+		// for(let i=0; i < Math.floor(cardsData.length/2); i++) {
+
+		// 	if ((selectedCardIndex + (i+1))>(cardsData.length-1)) {
+		// 		lastHalfCards.push(cardsData[selectedCardIndex + (i+1) - cardsData.length])
+		// 	} else {
+		// 		lastHalfCards.push(cardsData[selectedCardIndex + (i+1)])
+		// 	}
+			
+		// 	if ((selectedCardIndex - i -1) < 0) {
+		// 		firstHalfCards.unshift(cardsData[selectedCardIndex - i + cardsData.length - 1])
+		// 	}else{
+		// 		firstHalfCards.unshift(cardsData[selectedCardIndex - i - 1])
+		// 	}
+		// }
+
+		// console.log([firstHalfCards], cardsData[selectedCardIndex], [lastHalfCards])
+		// cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
 	}
 
 	let playInterval = setInterval(() => {})
