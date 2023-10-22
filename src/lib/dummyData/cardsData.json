@@ -2,34 +2,43 @@
 	"cardsData": [
 		{
 			"id": 0,
-			"title": "Card 0 Title",
+			"title": "Card 0 Title Beach Ocean",
+			"description": "<p>This is a description for Card 0, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
+			"bgImagePath": "/assets/images/0.jpg",
+			"bgImageAltText": "Alt Text for Card Image 0",
+			"bgVideoPath": "/assets/videos/0.mp4",
+			"bgVideoCaptions": "Card 0 Video Captions"
+		},
+		{
+			"id": 1,
+			"title": "Card 1 Title Record",
 			"description": "<p>This is a description for Card 1, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
-			"bgImagePath": "/assets/images/1.jpg",
+			"bgImagePath": "/assets/images/1.webp",
 			"bgImageAltText": "Alt Text for Card Image 1",
 			"bgVideoPath": "/assets/videos/1.mp4",
 			"bgVideoCaptions": "Card 1 Video Captions"
 		},
 		{
-			"id": 1,
-			"title": "Card 1 Title",
+			"id": 2,
+			"title": "Card 2 Title Flowers Rain",
 			"description": "<p>This is a description for Card 2, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
-			"bgImagePath": "/assets/images/2.webp",
+			"bgImagePath": "/assets/images/2.jpg",
 			"bgImageAltText": "Alt Text for Card Image 2",
 			"bgVideoPath": "/assets/videos/2.mp4",
 			"bgVideoCaptions": "Card 2 Video Captions"
 		},
 		{
-			"id": 2,
-			"title": "Card 2 Title",
+			"id":3,
+			"title": "Card 3 Title Smoke",
 			"description": "<p>This is a description for Card 3, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
-			"bgImagePath": "/assets/images/3.jpg",
+			"bgImagePath": "/assets/images/3.webp",
 			"bgImageAltText": "Alt Text for Card Image 3",
 			"bgVideoPath": "/assets/videos/3.mp4",
 			"bgVideoCaptions": "Card 3 Video Captions"
 		},
 		{
-			"id":3,
-			"title": "Card 3 Title",
+			"id": 4,
+			"title": "Card 4 Title Sky Beach",
 			"description": "<p>This is a description for Card 4, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
 			"bgImagePath": "/assets/images/4.webp",
 			"bgImageAltText": "Alt Text for Card Image 4",
@@ -37,31 +46,22 @@
 			"bgVideoCaptions": "Card 4 Video Captions"
 		},
 		{
-			"id": 4,
-			"title": "Card 4 Title",
+			"id": 5,
+			"title": "Card 5 Title Roads",
 			"description": "<p>This is a description for Card 5, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
-			"bgImagePath": "/assets/images/5.webp",
+			"bgImagePath": "/assets/images/5.jpg",
 			"bgImageAltText": "Alt Text for Card Image 5",
 			"bgVideoPath": "/assets/videos/5.mp4",
 			"bgVideoCaptions": "Card 5 Video Captions"
 		},
 		{
-			"id": 5,
-			"title": "Card 5 Title",
+			"id": 6,
+			"title": "Card 6 Title Waves",
 			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
-			"bgImagePath": "/assets/images/6.jpg",
+			"bgImagePath": "/assets/images/6.jpeg",
 			"bgImageAltText": "Alt Text for Card Image 6",
 			"bgVideoPath": "/assets/videos/6.mp4",
 			"bgVideoCaptions": "Card 6 Video Captions"
-		},
-		{
-			"id": 6,
-			"title": "Card 6 Title",
-			"description": "<p>This is a description for Card 6, in a P tag from a JSON string, using @html.</><p>This is a second P tag for testing.</>",
-			"bgImagePath": "/assets/images/7.jpeg",
-			"bgImageAltText": "Alt Text for Card Image 7",
-			"bgVideoPath": "/assets/videos/7.mp4",
-			"bgVideoCaptions": "Card 7 Video Captions"
 		}
 	]
 }

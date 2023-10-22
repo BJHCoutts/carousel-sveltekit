@@ -44,11 +44,9 @@
 		setTimeout( () => {card.style.opacity = '1'}, duration)
 	}
 
-	function handleScrollTo({currentTarget}: Event) {
+	function handleScrollTo({currentTarget, target}: Event) {
 		if (!currentTarget) {return console.error("No currentTarget")}
-		const selectedCardIndex = parseInt(currentTarget.getAttribute('href'))
-
-		console.log(selectedCardIndex)
+		const selectedCardIndex = parseInt(target.innerText)
 
 		let firstHalfCards =[]
 		let lastHalfCards =[]
@@ -68,6 +66,7 @@
 			}
 		}
 
+		// console.log([...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards])
 		cardsData = [...firstHalfCards, cardsData[selectedCardIndex], ...lastHalfCards]
 	}
 
